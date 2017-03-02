@@ -1,0 +1,106 @@
+﻿@model Evpro.Gui.Models.TaskModel
+
+@{
+
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Evpro-Template.cshtml";
+
+}
+
+<div class="content-wrapper" style="margin-top: -1800px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Create
+        </h1>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>TaskModel</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.deadLineTask, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+
+                        @Html.EditorFor(model => model.deadLineTask, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.deadLineTask, "", new { @class = "datefield" })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.idEvent, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.idEvent, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.idEvent, "", new { @class = "text-danger" })*@
+
+                        
+                        @Html.DropDownList("idEvent")
+                      
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.idOrgnizer, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.idOrgnizer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.idOrgnizer, "", new { @class = "text-danger" })*@
+                        @Html.DropDownList("idOrgnizer")
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.startTask, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.startTask, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.startTask, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })*@
+                        @Html.DropDownListFor(model => model.status, new SelectList(
+                        new List<Object>{
+                            new { value = "ToDo" , text = "ToDo"  },
+                            new { value = "Doing" , text = "Doing" },
+                            new { value = "Done" , text = "Done"}
+                        },
+                        "value",
+                        "text",
+                        2))
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10" style="width: 200px">
+                        <input type="submit" value="Create" class="btn btn-block btn-success btn-lg" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-info" })
+        </div>
+    </section>
+</div>

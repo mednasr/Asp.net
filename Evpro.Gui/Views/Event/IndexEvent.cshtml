@@ -1,0 +1,1044 @@
+﻿@using System.Web.UI.WebControls
+@model Evpro.Gui.Models.CostumeModel
+
+@{
+    Layout = "~/Views/Shared/Evpro-Template.cshtml";
+}
+
+<div class="content-wrapper" style="margin-top: -1800px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Event</a></li>
+            <li class="active">Management</li>
+        </ol>
+        <section class="content">
+            <center>
+                <a data-target="#exampleNiftySuperScaled11_@Model.A.idEvent" data-toggle="modal" href="">
+                    <div class="col-md-6" style="margin-bottom: -50px;">
+                        <div>
+                            <!-- Widget: user widget style 1 -->
+                            <div class="box box-widget widget-user">
+                                <!-- Add the bg color to the header using any of the bg-* classes -->
+
+                                @{ string path200 = "~/Upload/" + @Model.A.image; }
+                                <div class="widget-user-header bg-black" style="background: url('@Url.Content(path200)') center center;">
+
+                                    <h5 class="widget-user-desc" style="color: white; font-size: 30px; background-color: red; background-size: 50%;">Closest Event</h5>
+
+                                </div>
+                                <div class="widget-user-image">
+
+                                    <img style="width: 90px; height: auto; height: 80px; border: 3px solid #fff; border-radius: 20%; vertical-align: middle;" src="@Url.Content(path200)" alt="User Image">
+
+
+
+                                </div>
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <div class="col-sm-4 border-right">
+                                            <div class="description-block">
+                                                <h5 class="description-header">@Model.A.cityAdress</h5>
+                                                <span class="description-text">City</span>
+                                            </div>
+                                            <!-- /.description-block -->
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <div class="col-sm-4 border-right">
+                                            <div class="description-block">
+                                                <h5 class="description-header">@Model.A.eventStartingDate</h5>
+                                                <span class="description-text">Date</span>
+                                            </div>
+                                            <!-- /.description-block -->
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-sm-4">
+                                            <div class="description-block">
+                                                <h5 class="description-header">@Model.A.name</h5>
+                                                <span class="description-text">Event Name</span>
+                                            </div>
+                                            <!-- /.description-block -->
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+                                </div>
+                            </div>
+                            <!-- /.widget-user -->
+                        </div>
+                    </div>
+                </a>
+
+                <div class="modal fade modal-3d-flip-vertical in" id="exampleNiftySuperScaled11_@Model.A.idEvent" aria-hidden="true" aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1">
+                    <div class="modal-dialog" style="width: 1800px;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title">Event Info</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <center>
+                                    <div class="form-horizontal" style="width: 1700px;">
+                                        <div class="box box-warning">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title"> Event Info</h3>
+                                            </div>
+                                            <table id="" class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Category</th>
+                                                        <th>City </th>
+                                                        <th>Country</th>
+                                                        <th>Description</th>
+                                                        <th>Event Starting Date</th>
+                                                        <th>Event Finishing Date</th>
+                                                        <th>Event type</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>@Model.A.name</td>
+                                                        <td>@Model.A.category</td>
+                                                        <td>@Model.A.cityAdress</td>
+                                                        <td>@Model.A.countryAdress</td>
+                                                        <td>@Model.A.description</td>
+                                                        <td>@Model.A.eventStartingDate</td>
+                                                        <td>@Model.A.eventFinishingDate</td>
+                                                        <td>@Model.A.eventType</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <br><br><br><br>
+                                            <table id="" class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Location</th>
+                                                        <th>Picture</th>
+                                                        <th>Price</th>
+                                                        <th>Slogan</th>
+                                                        <th>Tag</th>
+                                                        <th>Facebook</th>
+                                                        <th>Twitter</th>
+                                                        <th>Video</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <img width="400px" src='@string.Format("https://maps.googleapis.com/maps/api/staticmap?center=" + @Model.A.cityAdress + "&zoom=12&size=600x300&maptype=roadmap&key=AIzaSyDeah9xbZkYTMb0lUazwWJOj73Yc5-KnHc&markers=color:blue%7Clabel:S%7C" + @Model.A.laltitude + "," + @Model.A.longitude)'>
+                                                        </td>
+                                                        <td>
+                                                            @{ string path400 = "~/Upload/" + @Model.A.image; }
+                                                            <img alt="Event" src="@Url.Content(path400)" width="200px" height="auto" />
+                                                        </td>
+                                                        <td>@Model.A.price</td>
+                                                        <td>@Model.A.slogan</td>
+                                                        <td>@Model.A.tag</td>
+                                                        <td>@Model.A.facebookEventLink</td>
+                                                        <td>@Model.A.twitterEventLink</td>
+                                                        <td>
+                                                            <iframe width="300" height="auto" src="@Model.A.video"></iframe>
+
+
+
+                                                        </td>
+                                                        <td>
+
+
+                                                            <center>
+                                                                <br>
+                                                                @Html.ActionLink("Edit", "Edit", new { id = Model.A.idEvent }, new { @class = "btn bg-navy btn-flat margin", style = "text-decoration: none;" })
+                                                                @Html.ActionLink("Delete", "Delete", new { id = Model.A.idEvent }, new { @class = "btn btn-block btn-danger btn-lg", id = "try_me_" + @Model.A.idEvent, style = "text-decoration: none;" })
+                                                                @Html.ActionLink("Get on PDF", "GETSinglePDF", new { id = Model.A.idEvent }, new { @class = "btn bg-orange btn-flat margin", style = "text-decoration: none;" })
+                                                            </center>
+
+
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </center>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default btn-pure margin-0" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal fade modal-3d-flip-vertical in" id="exampleNiftySuperScaled12_@Model.B.idEvent" aria-hidden="true" aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1">
+                    <div class="modal-dialog" style="width: 1800px;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title">Event Info</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <center>
+                                    <div class="form-horizontal" style="width: 1700px;">
+                                        <div class="box box-warning">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title"> Event Info</h3>
+                                            </div>
+                                            <table id="" class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Category</th>
+                                                        <th>City </th>
+                                                        <th>Country</th>
+                                                        <th>Description</th>
+                                                        <th>Event Starting Date</th>
+                                                        <th>Event Finishing Date</th>
+                                                        <th>Event type</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>@Model.B.name</td>
+                                                        <td>@Model.B.category</td>
+                                                        <td>@Model.B.cityAdress</td>
+                                                        <td>@Model.B.countryAdress</td>
+                                                        <td>@Model.B.description</td>
+                                                        <td>@Model.B.eventStartingDate</td>
+                                                        <td>@Model.B.eventFinishingDate</td>
+                                                        <td>@Model.B.eventType</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <br><br><br><br>
+                                            <table id="" class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Location</th>
+                                                        <th>Picture</th>
+                                                        <th>Price</th>
+                                                        <th>Slogan</th>
+                                                        <th>Tag</th>
+                                                        <th>Facebook</th>
+                                                        <th>Twitter</th>
+                                                        <th>Video</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <img width="400px" src='@string.Format("https://maps.googleapis.com/maps/api/staticmap?center=" + @Model.B.cityAdress + "&zoom=12&size=600x300&maptype=roadmap&key=AIzaSyDeah9xbZkYTMb0lUazwWJOj73Yc5-KnHc&markers=color:blue%7Clabel:S%7C" + @Model.B.laltitude + "," + @Model.B.longitude)'>
+                                                        </td>
+                                                        <td>
+                                                            @{ string path401 = "~/Upload/" + @Model.B.image; }
+                                                            <img alt="Event" src="@Url.Content(path401)" width="200px" height="auto" />
+                                                        </td>
+                                                        <td>@Model.B.price</td>
+                                                        <td>@Model.B.slogan</td>
+                                                        <td>@Model.B.tag</td>
+                                                        <td>@Model.B.facebookEventLink</td>
+                                                        <td>@Model.B.twitterEventLink</td>
+                                                        <td>
+                                                            <iframe width="300" height="auto" src="@Model.B.video"></iframe>
+
+
+
+                                                        </td>
+                                                        <td>
+
+
+                                                            <center>
+                                                                <br>
+                                                                @Html.ActionLink("Edit", "Edit", new { id = Model.B.idEvent }, new { @class = "btn bg-navy btn-flat margin", style = "text-decoration: none;" })
+                                                                @Html.ActionLink("Delete", "Delete", new { id = Model.B.idEvent }, new { @class = "btn btn-block btn-danger btn-lg", id = "try_me_" + @Model.B.idEvent, style = "text-decoration: none;" })
+                                                                @Html.ActionLink("Get on PDF", "GETSinglePDF", new { id = Model.B.idEvent }, new { @class = "btn bg-orange btn-flat margin", style = "text-decoration: none;" })
+                                                            </center>
+
+
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </center>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default btn-pure margin-0" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <a data-target="#exampleNiftySuperScaled12_@Model.B.idEvent" data-toggle="modal" href="">
+                    <div class="col-md-6">
+                        <div>
+                            <!-- Widget: user widget style 1 -->
+                            <div class="box box-widget widget-user">
+                                <!-- Add the bg color to the header using any of the bg-* classes -->
+
+                                @{ string path201 = "~/Upload/" + @Model.B.image; }
+                                <div class="widget-user-header bg-black" style="background: url('@Url.Content(path201)') center center;">
+
+                                    <h5 class="widget-user-desc" style="color: white; font-size: 30px; background-color: green; background-size: 50%;">Last Orgnized Event</h5>
+
+                                </div>
+                                <div class="widget-user-image">
+
+                                    <img style="width: 90px; height: auto; height: 80px; border: 3px solid #fff; border-radius: 20%; vertical-align: middle;" src="@Url.Content(path200)" alt="User Image">
+
+
+                                </div>
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <div class="col-sm-4 border-right">
+                                            <div class="description-block">
+                                                <h5 class="description-header">@Model.B.cityAdress</h5>
+                                                <span class="description-text">City</span>
+                                            </div>
+                                            <!-- /.description-block -->
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <div class="col-sm-4 border-right">
+                                            <div class="description-block">
+                                                <h5 class="description-header">@Model.B.eventStartingDate</h5>
+                                                <span class="description-text">Date</span>
+                                            </div>
+                                            <!-- /.description-block -->
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-sm-4">
+                                            <div class="description-block">
+                                                <h5 class="description-header">@Model.B.name</h5>
+                                                <span class="description-text">Event Name</span>
+                                            </div>
+                                            <!-- /.description-block -->
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+                                </div>
+                            </div>
+                            <!-- /.widget-user -->
+                        </div>
+                    </div>
+                </a>
+            </center>
+
+            <div class="col-md-6">
+                <!-- USERS LIST -->
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Events</h3>
+
+                        <div class="box-tools pull-right">
+                            <span class="label label-danger">@ViewBag.i Events</span>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <ul class="users-list clearfix">
+
+                            <script>
+                                var markers = [];
+                                var count;
+
+                                function insert(data) {
+                                    markers.push(data);
+
+                                }
+                            </script>
+
+                            @foreach (var item in Model.Ev)
+                            {
+
+                                <script>
+                                    var obj = { tile: '@item.name', lat: '@item.laltitude', lng: '@item.longitude' };
+                                    insert(obj);
+                                </script>
+                                <li>
+                                    @{string path = "~/Upload/" + @item.image;}
+                                    <img src="@Url.Content(path)" style="width: 170px; height: 170px;" alt="User Image">
+                                    <a class="users-list-name" href="#">@Html.DisplayFor(modelItem => item.name)</a>
+                                    <span class="users-list-date">@Html.DisplayFor(modelItem => item.eventStartingDate)</span>
+                                    <button class="btn btn-info" data-target="#exampleNiftySuperScaled8_@item.idEvent" data-toggle="modal" type="button">
+                                        Manage Event
+                                    </button>
+
+                                    @Html.ActionLink("Get on PDF", "GETSinglePDF", new { id = item.idEvent }, new { @class = "btn bg-orange btn-flat margin" })
+                                </li>
+
+
+                                <div class="modal fade modal-3d-flip-vertical in" id="exampleNiftySuperScaled8_@item.idEvent" aria-hidden="true" aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1">
+                                    <div class="modal-dialog" style="width: 1800px;">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title">Event Info</h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <center>
+                                                    <div class="form-horizontal" style="width: 1700px;">
+                                                        <div class="box box-warning">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title"> Event Info</h3>
+                                                            </div>
+                                                            <table id="" class="table table-bordered table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Name</th>
+                                                                        <th>Category</th>
+                                                                        <th>City </th>
+                                                                        <th>Country</th>
+                                                                        <th>Description</th>
+                                                                        <th>Event Starting Date</th>
+                                                                        <th>Event Finishing Date</th>
+                                                                        <th>Event type</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>@Html.DisplayFor(modelItem => item.name)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.category)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.cityAdress)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.countryAdress)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.description)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.eventStartingDate)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.eventFinishingDate)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.eventType)</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <br><br><br><br>
+                                                            <table id="" class="table table-bordered table-hover">
+                                                                <thead>
+                                                                    <tr>
+
+                                                                        <th>Location</th>
+                                                                        <th>Picture</th>
+                                                                        <th>Price</th>
+                                                                        <th>Slogan</th>
+                                                                        <th>Tag</th>
+                                                                        <th>Facebook</th>
+                                                                        <th>Twitter</th>
+                                                                        <th>Video</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <img width="400px" src='@string.Format("https://maps.googleapis.com/maps/api/staticmap?center=" + @item.cityAdress + "&zoom=12&size=600x300&maptype=roadmap&key=AIzaSyDeah9xbZkYTMb0lUazwWJOj73Yc5-KnHc&markers=color:blue%7Clabel:S%7C" + @item.laltitude + "," + @item.longitude)'>
+                                                                        </td>
+                                                                        <td>
+                                                                            @{ string path1 = "~/Upload/" + @item.image; }
+                                                                            <img alt="Event" src="@Url.Content(path1)" width="200px" height="auto" />
+                                                                        </td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.price)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.slogan)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.tag)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.facebookEventLink)</td>
+                                                                        <td>@Html.DisplayFor(modelItem => item.twitterEventLink)</td>
+                                                                        <td>
+                                                                            <iframe width="300" height="auto" src="@item.video"></iframe>
+
+
+
+                                                                        </td>
+                                                                        <td>
+
+
+                                                                            <center>
+                                                                                <br>
+                                                                                @Html.ActionLink("Edit", "Edit", new { id = item.idEvent }, new { @class = "btn bg-navy btn-flat margin", style = "text-decoration: none;" })
+                                                                                @Html.ActionLink("Delete", "Delete", new { id = item.idEvent }, new { @class = "btn btn-block btn-danger btn-lg", id = "try_me_" + @item.idEvent, style = "text-decoration: none;" })
+                                                                                @Html.ActionLink("Get on PDF", "GETSinglePDF", new { id = item.idEvent }, new { @class = "btn bg-orange btn-flat margin", style = "text-decoration: none;" })
+                                                                            </center>
+
+
+
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </center>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default btn-pure margin-0" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                                                }
+                            <script>
+
+                            </script>
+                        </ul>
+                        <!-- /.users-list -->
+                    </div>
+
+
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+
+                        @Html.ActionLink("Export all events to PDF", "GETPdf", new { @class = "uppercase" })
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+
+                <!--/.box -->
+            </div>
+            <div class="col-md-6">
+                <!-- USERS LIST -->
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Locations</h3>
+
+                        <div class="box-tools pull-right">
+                            <span class="label label-danger">@ViewBag.i Events Location</span>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <ul class="users-list clearfix">
+                            <center>
+                                <script>
+                                    var markers = [];
+                                    var count;
+
+                                    function insert(data) {
+                                        markers.push(data);
+
+                                    }
+                                </script>
+
+                                @foreach (var item in Model.Ev)
+                                {
+
+                                    <script>
+                                        var obj = { tile: '@item.name', lat: '@item.laltitude', lng: '@item.longitude' };
+                                        insert(obj);
+                                    </script>
+
+
+
+
+
+                                }
+
+
+                                <img width="600" src=""
+                                     alt="Google Map of Albany, NYa" id="mapStatic" />
+                                <div class="col-lg-3 col-xs-6" style="width: 620px; margin-left: 75px;">
+                                    <!-- small box -->
+                                    <div class="small-box bg-green">
+                                        <div class="inner">
+                                            <h3>
+                                                @ViewBag.i<sup style="font-size: 20px"> Events</sup>
+                                            </h3>
+                                        </div>
+
+                                        <div class="icon">
+                                            <i class="ion ion-clipboard"></i>
+                                        </div>
+                                        <div class="small-box-footer">
+                                            <i class="fa fa-arrow-circle-right">
+                                            </i>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </center>
+                        </ul>
+                        <!-- /.users-list -->
+                    </div>
+
+
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <button class="btn btn-info" data-target="#exampleNiftySuperScaled55" data-toggle="modal" type="button">
+                            Details
+                        </button>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+
+                <!--/.box -->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                        <!-- Modal -->
+                        <div class="modal fade modal-super-scaled" id="exampleNiftySuperScaled80" aria-hidden="true"
+                             aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1">
+                            <div class="modal-dialog" style="width: 1800px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        <h4 class="modal-title">Add event</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <center>
+
+
+                                            <script type="text/javascript">
+                                                $('#exampleNiftySuperScaled80')
+                                                    .on('shown.bs.modal',
+                                                        function () {
+                                                            var mapOptions = {
+                                                                center: new google.maps.LatLng(36.8, 10.1),
+                                                                zoom: 7,
+                                                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                            };
+
+                                                            var infoWindow = new google.maps.InfoWindow();
+                                                            var latlngbounds = new google.maps.LatLngBounds();
+                                                            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                                                            google.maps.event.addListener(map,
+                                                                'click',
+                                                                function (e) {
+
+                                                                    // alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                                                                    document.getElementById("lat").value = e.latLng.lat();
+                                                                    document.getElementById("long").value = e.latLng.lng();
+                                                                    //document.getElementById("p2").innerHTML = e.latLng.lng();
+
+                                                                });
+                                                            marker = new google.maps.Marker({
+                                                                map: map,
+                                                                draggable: true,
+                                                                animation: google.maps.Animation.DROP,
+                                                                position: { lat: 36.8, lng: 10.1 }
+                                                            });
+                                                            marker.addListener('click', toggleBounce);
+                                                            //marker.setPosition(tx);
+                                                            google.maps.event.addListener(marker,
+                                                                'dragend',
+                                                                function () {
+                                                                    var lat = marker.getPosition().lat();
+                                                                    var lng = marker.getPosition().lng();
+                                                                    /*marke
+                                                                    $('#lat').val(lat);
+                                                                    $('#lng').val(lng);*/
+                                                                    /*$.ajax({
+                                                                        url: "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=true",
+                                                                        success: function (res) {
+                                                                            console.log(res.results[0].formatted_address);
+                                                                        }
+                                                                    })*/
+                                                                    var latlng = new google.maps.LatLng(lat, lng);
+                                                                    var geocoder = geocoder = new google.maps.Geocoder();
+                                                                    geocoder.geocode({ 'latLng': latlng },
+                                                                        function (results, status) {
+
+                                                                            if (status == google.maps.GeocoderStatus.OK) {
+                                                                                if (results[1]) {
+                                                                                    //alert("Location: " + results[1].formatted_address);
+                                                                                    $(document).find("#A_countryAdress").val(results[1].formatted_address);
+                                                                                    $("#A_cityAdress").val(results[1].formatted_address);
+                                                                                    $("#A_laltitude").val(results[1].geometry.location.lat());
+                                                                                    $("#A_longitude").val(results[1].geometry.location.lng());
+                                                                                }
+                                                                            }
+                                                                        });
+
+                                                                });
+                                                            google.maps.event.addListener(marker,
+                                                                'tx',
+                                                                function () {
+                                                                    var tx = marker.setPosition().tx();
+                                                                    $('#tx').val(tx);
+
+                                                                });
+
+
+                                                            function toggleBounce() {
+                                                                if (marker.getAnimation() !== null) {
+                                                                    marker.setAnimation(null);
+                                                                } else {
+                                                                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                                                                }
+                                                            }
+
+                                                        });
+
+
+                                            </script>
+
+                                            <center>
+                                                <div id="dvMap" style="width: 700px; height: 500px;">
+                                                </div>
+                                            </center>
+
+                                            <br><br>
+                                            @using (Html.BeginForm("Create", "Event", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+
+                                                <div class="form-horizontal" style="width: 1700px;">
+                                                    <div class="box box-warning">
+                                                        <div class="box-header with-border">
+                                                            <h3 class="box-title">Add Event</h3>
+                                                        </div>
+                                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.cityAdress, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.cityAdress, new { htmlAttributes = new { @class = "form-salah empty ", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.cityAdress, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.countryAdress, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.countryAdress, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.countryAdress, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.laltitude, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.laltitude, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.laltitude, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.longitude, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.longitude, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.name, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;"  } })
+                                                                @Html.ValidationMessageFor(model => model.A.name, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.category, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.category, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.category, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.description, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.description, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.eventFinishingDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                <input type="date" class="form-salah empty" name="A.eventFinishingDate" required />
+                                                                @Html.ValidationMessageFor(model => model.A.eventFinishingDate, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.eventStartingDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                <input type="date" class="form-salah empty" name="A.eventStartingDate" required />
+                                                                @Html.ValidationMessageFor(model => model.A.eventStartingDate, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.eventType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.eventType, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.eventType, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.facebookEventLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.facebookEventLink, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.facebookEventLink, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.price, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.price, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.price, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.slogan, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.slogan, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.slogan, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.tag, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.tag, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.tag, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.twitterEventLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.twitterEventLink, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.twitterEventLink, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.video, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.EditorFor(model => model.A.video, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                                @Html.ValidationMessageFor(model => model.A.video, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.owner_idUser, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                <select name="A.owner_idUser" class="form-salah empty" style="width: 1100px;" >
+                                                                    @foreach (var item in Model.Eo)
+                                                                    {
+                                                                        <option value="@item.idUser">@item.idUser</option>
+                                                                    }
+                                                                </select>
+                                                                @Html.ValidationMessageFor(model => model.A.owner_idUser, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating" style="width: 90%;">
+                                                            @Html.LabelFor(model => model.A.reward_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                <select name="A.reward_id" class="form-salah empty" style="width: 1100px;" >
+                                                                    @foreach (var item in Model.Re)
+                                                                    {
+                                                                        <option value="@item.id">@item.id</option>
+                                                                    }
+                                                                </select>
+                                                                @Html.ValidationMessageFor(model => model.A.reward_id, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.A.image, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                            <div class="col-md-10">
+                                                                @Html.TextBox("image", null, new { type = "file", @class = "btn btn-info", required = "required" })
+                                                                @Html.ValidationMessageFor(model => model.A.image)
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group material-salah floating">
+                                                            <div class="col-md-offset-2 col-md-10">
+                                                                <input type="submit" value="Create" class="btn btn-success" /><br><br>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-pure margin-0" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Modal -->
+                        <div class="modal fade modal-super-scaled" id="exampleNiftySuperScaled55" aria-hidden="true"
+                             aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1">
+                            <div class="modal-dialog" style="width: 1800px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        <h4 class="modal-title">All events location</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <center>
+
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="form-horizontal" style="width: 1700px;">
+                                                <div class="">
+
+                                                    @foreach (var item in Model.Ev)
+                                                    {
+                                                        <div class="col-md-6">
+                                                            <!-- USERS LIST -->
+                                                            <div class="box box-danger">
+                                                                <div class="box-header with-border">
+                                                                    <h3 class="box-title">Event: @item.name</h3>
+
+                                                                    <div class="box-tools pull-right">
+
+                                                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body no-padding">
+                                                                    <ul class="users-list clearfix">
+                                                                        <center>
+
+
+
+                                                                            <img width="600px" src='@string.Format("https://maps.googleapis.com/maps/api/staticmap?center=" + @item.cityAdress + "&zoom=12&size=600x300&maptype=roadmap&key=AIzaSyDeah9xbZkYTMb0lUazwWJOj73Yc5-KnHc&markers=color:blue%7Clabel:S%7C" + @item.laltitude + "," + @item.longitude)'>
+
+                                                                        </center>
+                                                                    </ul>
+                                                                    <!-- /.users-list -->
+                                                                </div>
+
+
+                                                                <!-- /.box-body -->
+                                                                <!-- /.box-footer -->
+                                                            </div>
+
+                                                            <!--/.box -->
+                                                        </div>
+
+
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-pure margin-0" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Modal -->
+
+                    </div>
+
+                    <div class="site-action">
+                        <button type="button" data-target="#exampleNiftySuperScaled80" data-toggle="modal" class="site-action-toggle btn-raised btn btn-success btn-floating">
+                            <i class="fa fa-fw fa-plus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+
+    </section>
+    <!-- Main content -->
+</div>
+
+
+
+<script src="@Url.Content("~/Content/sweetalert.min.js")"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiPsrwiJnGZmu3MGDppHm8XX8cl9NK25s"
+        type="text/javascript"></script>
+<link rel="stylesheet" href="@Url.Content("~/Content/sweetalert.css")">
+<script>
+
+    $("a[id*='try_me']").click(function () {
+        var link = $(this).attr("href");
+        var id = $(this).attr("id");
+
+        $(this).attr("href", "#");
+
+        swal({
+            title: "Are you sure?",
+            text:
+                "You will not be able to recover this Event!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonText: 'Yes, delete it!',
+            closeOnConfirm: true
+
+        },
+            function (isConfirm) {
+
+
+                if (isConfirm) {
+                    window.location = link;
+                } else {
+                    $("#" + id).attr("href", link);
+
+                }
+                //swal("Deleted!", "Your imaginary file has been deleted!", "success");
+            });
+
+    });
+
+    $(document).ready(function () {
+        /*
+        <img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=Tunisie&zoom=5&size=600x300&maptype=roadmap
+         &markers=color:red|label:C|40.718217,-73.998284
+
+        */
+        var mapString = "https://maps.googleapis.com/maps/api/staticmap?center=Tunisie&zoom=5&size=600x300&maptype=roadmap&key=AIzaSyDeah9xbZkYTMb0lUazwWJOj73Yc5-KnHc";
+        for (var i = 0; i < markers.length; i++) {
+            mapString += "&markers=color:red|label:" + markers[i].title + "|" + markers[i].lat + "," + markers[i].lng;
+        }
+        $("#mapStatic").attr("src", mapString);
+    });
+
+</script>

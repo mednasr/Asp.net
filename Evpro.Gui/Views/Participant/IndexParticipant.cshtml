@@ -1,0 +1,366 @@
+﻿﻿
+@{
+    ViewBag.Title = "Vip Guests";
+    Layout = "~/Views/Shared/Evpro-Template.cshtml";
+}
+
+
+<link type="text/css" rel="stylesheet" href="~/Content/materialize/css/materialize.min.css" media="screen,projection" />
+<script type="text/javascript" src="~/Content/materialize/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<!-- Ionicons -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<div class="content-wrapper" style="margin-top: -1800px;" ng-app="app" ng-controller="ParticipantCtrl">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+
+
+<h1>
+    Participants
+    <small>Vip</small>
+</h1>
+
+
+
+
+<ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Participants</a></li>
+    <li class="active">Management</li>
+</ol>
+
+
+
+<div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="row">
+
+        <div class="small-box bg-yellow" style="margin-top: 100px; margin-left: 22px; height: 130px;">
+            <div class="inner" style="margin-top: 100px;">
+                <h3>@ViewBag.num1</h3>
+                <p>Normale Participants</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer" style="margin-top: -3px; height: 30px;">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+
+        <div class="col-lg-3 col-xs-6" style="margin-top: -147px; position: absolute; margin-left: 600px;">
+            <!-- small box -->
+            <div class="small-box bg-red" style="width: 400px; margin-top: -3px; margin-left: -30px;">
+                <div class="inner">
+                    <h3>@ViewBag.num</h3>
+                    <p>VIP Participants</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer" style="height: 30px;">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xs-6" style="margin-top: -147px; position: absolute; margin-left: 1200px;">
+            <div class="small-box bg-green" style="width: 400px; margin-left: -14px; margin-top: -4px;">
+                <div class="inner">
+                    <h3>
+                        @ViewBag.num4<sup style="font-size: 20px">%</sup>
+                    </h3>
+                    <p>Statistics</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer" style="height: 30px;">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<section class="content">
+<div class="row">
+    <div class="col-xs-12" style="margin-top: 10px;">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-tools">
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search" ng-model="searchText" />
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- /.box-header -->
+            <!-- <p>{{model | json}}</p>-->
+
+            <div class="box-body" style="margin-top: 20px;">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                        <th>Nickname</th>
+                        <th>Password</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr ng-repeat="test in model | filter : searchText">
+                        <td>{{test.firstName}}</td>
+                        <td>{{test.lastName}}</td>
+                        <td>{{test.gender}}</td>
+                        <td>{{test.mail}}</td>
+                        <td>{{test.nickName}}</td>
+                        <td>{{test.password}}</td>
+
+                        <td>
+                      
+                            <a href="@Url.Action("Edit", "Participant")/?id={{test.idUser}}"><i class="btn-floating btn-large waves-effect waves-light green editpop" ><i class="large material-icons">mode_edit</i></i></a>
+                            <a href="@Url.Action("Delete", "Participant")/?id={{test.idUser}}"><i class="btn-floating btn-large waves-effect waves-light red delete" ><i class="large material-icons">delete</i></i></a>
+                        </td>
+                    </tr>
+                    <tr ng-if="model.length == 0">
+
+                        <td colspan="4" class="text-center">There is no Vip Guests</td>
+
+                    </tr>
+
+                    <tr ng-if="states.showParticipantForm">
+                        <td>
+
+
+
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="first_name" type="text" class="validate" ng-model="new.Participant.FirstName">
+                                <label for="first_name">Name</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s6">
+
+                                <input id="LastName" type="text" class="validate" ng-model="new.Participant.LastName">
+                                <label for="LastName">Last Name</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s6">
+                                <input id="Gender" type="text" class="validate" ng-model="new.Participant.Gender">
+                                <label for="Gender">Gender</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s6">
+                                <input id="Email" type="email" class="validate" ng-model="new.Participant.mail">
+                                <label for="Email" data-error="wrong" data-success="right">Email</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s6">
+                                <input id="NickName" type="text" class="validate" ng-model="new.Participant.NickName">
+                                <label for="NickName">Nickname</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s6">
+                                <input id="Password" type="password" class="validate" ng-model="new.Participant.Password">
+                                <label for="Password">Password</label>
+                            </div>
+                        </td>
+                        <td>
+                                       
+                            <button type="button" class="btn-floating btn-large waves-effect waves-light blue" ng-click="addParticipant()" loading-button><i class="material-icons">add</i></button>
+                            <button type="button" class="btn-floating btn-large waves-effect waves-light red" ng-click="showParticipantForm(false)"><i class="material-icons">report_problem</i></button>
+                        </td>
+                    </tr>
+
+                    <!--<tr>
+                        <td colspan="4">{{new.Participant | json}}</td>
+                    </tr>-->
+
+                    </tbody>
+
+                </table>
+                <a ng-click="showParticipantForm(true)" class="btn btn-primary btn-block margin-bottom"> Create </a>
+            </div>
+
+
+            <!-- /.box-body -->
+        </div>
+
+        <form action="/Participant/Indexx" method="post" class="col s12" >
+
+            <div class="box box-info" style="margin-top: 10px;">
+                     
+                <div class="box-header">
+                    <i class="fa fa-envelope"></i>
+                    <h3 class="box-title">Quick Email</h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                    <!-- /. tools -->
+                </div>
+                <div class="box-body">
+
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="__RequestVerificationToken" class="validate" type="hidden" value="Dl8q0p3LhbmEOwmZN33XumofGTCGtH26TCsaT12UHEn5OLtYX_NrdAKXZFiW-TZ8SIO4Ax-JnA39cRd9p9wfMc6CY5gDsVnwmLzksDAZdFs1" />
+
+                            <input id="From" class="validate" name="From" type="email" value="" />
+                            <label for="From" data-error="wrong" data-success="right">From : </label>
+                            <span class="field-validation-valid" data-valmsg-for="From" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+
+                            <input class="validate" id="To" name="To" type="email" value="" />
+                            <label for="To"data-error="wrong" data-success="right">To : </label>
+                            <span class="field-validation-valid" data-valmsg-for="To" data-valmsg-replace="true"></span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input class="validate" id="Subject" name="Subject" type="text" value="" />
+                            <label for="Subject">Subject </label>
+                            <span class="field-validation-valid" data-valmsg-for="Subject" data-valmsg-replace="true"></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                                  
+                            <textarea  id="Body" name="Body" class="materialize-textarea" length="120"></textarea>
+                            <label for="Body">Enter your Message </label>
+                            <span class="field-validation-valid" data-valmsg-for="Body" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="box-footer clearfix">
+                                        
+                                <button class="btn waves-effect waves-light" value="Send" type="submit" name="action">
+                                    Send
+                                    <i class="material-icons right">send</i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
+        </form>
+
+    </div>      </div>
+<!--  ///////////////////////////////////-->
+
+<!-- ///////////////////////////////-->
+<!-- /.box -->
+</div>
+
+<div class="element_to_pop_up" style="display: none">Content of popup</div>
+
+                                                <!-- /.col -->
+                                  
+                                            <!-- /.row -->
+
+
+
+<!--<script>
+    $(document)
+              .on("click",
+                  "table tbody tr td .delete ",
+                  function (event) {
+                      var href = $(this).parent().attr("href");
+                      event.preventDefault();
+                      swal({
+                          title: "Are you sure?",
+                          text: "You will not be able to recover this Participant!",
+                          type: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#DD6B55",
+                          confirmButtonText: "Yes, delete it!",
+                          cancelButtonText: "No, cancel plx!",
+                          closeOnConfirm: false,
+                          closeOnCancel: false
+                      },
+function (isConfirm) {
+    if (isConfirm) {
+        swal("Deleted!", "Your Participant has been deleted.", "success");
+        window.location = href;
+       
+    } else {
+        swal("Cancelled", "Your Participant  is safe :)", "error");
+    }
+});
+                  });
+
+</script>-->
+<script>
+    $(document)
+              .on("click",
+                  "table tbody tr td .delete ",
+                  function (event) {
+                      var href = $(this).parent().attr("href");
+                      event.preventDefault();
+                      swal({
+                          title: "You will not be able to recover this Participant !",
+                          text: "Delete Vip Participant",
+                          type: "warning",
+                          showCancelButton: true,
+                          closeOnConfirm: false,
+                          confirmButtonColor: "red",
+                          
+                          showLoaderOnConfirm: true,
+                      },
+function () {
+    setTimeout(function () {
+        swal("Participant Deleted !");
+        window.location = href;
+    }, 4000);
+});
+             /*         swal({
+                          title: "Ajax request example",
+                          text: "Submit to run ajax request",
+                          type: "info",
+                          showCancelButton: true,
+                          closeOnConfirm: false,
+                          showLoaderOnConfirm: true,
+                          timer: 2000
+                      },
+function () {
+
+    setTimeout(function () {
+        swal("Ajax request finished!");
+    }, 2000);
+    window.location = href;
+    
+});*/
+                  });
+
+</script>

@@ -1,0 +1,216 @@
+﻿@model Evpro.Gui.Models.EventModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/Evpro-Template.cshtml";
+}
+
+
+
+
+
+<div class="content-wrapper" style="margin-top: -1800px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+
+        <h1>
+            <h2>Edit</h2>
+            <small>Event</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Event</a></li>
+            <li class="active">Edit</li>
+        </ol>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal">
+
+                                    <hr />
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.idEvent)
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.category, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.category, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                            @Html.ValidationMessageFor(model => model.category, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.cityAdress, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.cityAdress, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                            @Html.ValidationMessageFor(model => model.cityAdress, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.countryAdress, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.countryAdress, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                            @Html.ValidationMessageFor(model => model.countryAdress, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                            @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.eventFinishingDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <input type="date" class="form-salah empty" name="eventFinishingDate" required />
+                                            @Html.ValidationMessageFor(model => model.eventFinishingDate, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.eventStartingDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <input type="date" class="form-salah empty" name="eventStartingDate" required/>
+                                            @Html.ValidationMessageFor(model => model.eventStartingDate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.eventType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.eventType, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                @Html.ValidationMessageFor(model => model.eventType, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.facebookEventLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.facebookEventLink, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                @Html.ValidationMessageFor(model => model.facebookEventLink, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.laltitude, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.laltitude, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                @Html.ValidationMessageFor(model => model.laltitude, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.longitude, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                @Html.ValidationMessageFor(model => model.longitude, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.video, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.video, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                @Html.ValidationMessageFor(model => model.video, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.twitterEventLink, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.twitterEventLink, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                @Html.ValidationMessageFor(model => model.twitterEventLink, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.tag, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.tag, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                @Html.ValidationMessageFor(model => model.tag, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.slogan, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.slogan, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                @Html.ValidationMessageFor(model => model.slogan, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group material-salah floating" style="width: 90%;">
+                                        @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-salah empty", required = "required", style = "width:1100px;" } })
+                                                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <center>
+                                        <div class="form-group material-salah floating" style="width: 90%;">
+
+                                            <input type="submit" value="Save" class="btn btn-success" />
+
+                                        </div>
+                                    </center>
+
+                                </div>
+                            }
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+    </section>
+    <!-- Main content -->
+</div>
+<div>
+    @Html.ActionLink("Back to List", "IndexEvent")
+</div>
+
+
+

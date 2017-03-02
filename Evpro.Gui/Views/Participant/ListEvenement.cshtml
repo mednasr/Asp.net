@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Evpro.Domain.Entities.ourevent>
+
+@{
+    ViewBag.Title = "ListEvenement";
+}
+
+<h2>ListEvenement</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idEvent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cityAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.countryAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eventFinishingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eventStartingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eventType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.facebookEventLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.laltitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.slogan)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idEvent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cityAdress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.countryAdress)
+            .
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventFinishingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventStartingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.facebookEventLink)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.laltitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.slogan)
+        </td>
+     
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.idEvent  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.idEvent }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idEvent })
+        </td>
+    </tr>
+}
+
+</table>

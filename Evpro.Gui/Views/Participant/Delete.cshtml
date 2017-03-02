@@ -1,0 +1,81 @@
+﻿@model Evpro.Domain.Entities.participant
+
+@{
+
+
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Evpro-Template.cshtml";
+}
+
+
+<div class="content-wrapper" style="margin-top: -1800px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+
+        <h1>
+            <h2>Delete</h2>
+            <small>Vip</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Participants</a></li>
+            <li class="active">Delete</li>
+        </ol>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Are you sure you want to delete this?</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th> Id</th>
+                                        <th>Vip</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+
+                                    <tr>
+                                        <td>@Html.DisplayFor(model => model.idUser)</td>
+                                        <td> @Html.DisplayFor(model => model.vip)</td>
+
+                                        <td>
+
+                                          
+                                        </td>
+                                    </tr>
+                                   
+                                </tbody>
+                                
+                            </table>
+                           
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Confirm" class="btn btn-primary btn-block margin-bottom" style="width: 500px;margin-left:550px;" />
+
+                                </div>
+                            }
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+
+
+    </section>
+    <!-- Main content -->
+    <section class="content"></section>
+</div>
